@@ -1,14 +1,22 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Created by Sarah Shepherd
+CIS4500 Specials Topic
+University of Guelph
+Interlocking pieces
+
+Idea originally was going to be sliding block puzzle, but had more challenging trying to make
+wierd shape blocks.
+Still the puzzle involves logic to think and patiences to accomplish. Puzzle Solver.
  */
 
 function freeBlock() {
 
 
     var board = document.getElementById("canvas");
+    document.getElementById("skip").addEventListener("click", skipper);
+    ;
     var context = board.getContext("2d");
+
 
     init();
 
@@ -19,18 +27,26 @@ function freeBlock() {
     var colors;
     var mouseX, mouseY;
     var dragHoldX, dragHoldY;
-    
+
     function init() {
         numPieces = 11;
-        colors= ["red","fuchsia","orange","yellow","lime","green","teal","blue","purple","maroon","white","silver"];
+        colors = ["red", "fuchsia", "orange", "yellow", "lime", "teal", "green", "blue", "purple", "maroon", "white", "silver"];
+        shapes = [];
+        makeShapes();
+        drawScreen();
+        board.addEventListener("mousedown", mouseDownListener, false);
+    }
+    function skipper() {
+        colors = ["yellow", "orange", "fuchsia", "red", "blue", "teal", "green", "lime", "white", "maroon", "purple", "silver"];
         shapes = [];
         makeShapes();
         drawScreen();
         board.addEventListener("mousedown", mouseDownListener, false);
     }
 
+
     function makeShapes() {
-        var i, j,k=0;
+        var i, j, k = 0;
         var tempColor, shape;
         //test
         for (j = 0; j < 3; j++) {
@@ -38,8 +54,8 @@ function freeBlock() {
             for (i = 0; i < 4; i++) {
                 if (j !== 3 && i !== 4) {
                     tempColor = colors[k];
-console.log(tempColor);
-                    shape = {x: i*100, y: j*100, width: 95, height: 95, color: tempColor};
+//console.log(tempColor);
+                    shape = {x: i * 100, y: j * 100, width: 95, height: 95, color: tempColor};
                     shapes.push(shape);
                 }
                 k++;
@@ -71,6 +87,7 @@ console.log(tempColor);
             dragging = false;
             window.removeEventListener("mousemove", mouseMoveListener, false);
         }
+        checkSolution();
     }
 
     function mouseMoveListener(evt) {
@@ -96,7 +113,7 @@ console.log(tempColor);
         for (var i = 0; i < numPieces; i++) {
 
             if (i !== index) {
- 
+
                 //leftside and rightside
                 if ((posX >= shapes[i].x && posX <= (shapes[i].x + shapes[i].width)) || ((posX + shapewidth) >= shapes[i].x && (posX + shapewidth) <= (shapes[i].x + shapes[i].width))) {
 
@@ -124,8 +141,9 @@ console.log(tempColor);
             posY = maxY;
 
         }
-            //potential jumping block issue
-if ((shapes[index].x-posX)>100|| (shapes[index].y-posY)>100||(shapes[index].x-posX)<-100|| (shapes[index].y-posY)<-100)collide=true;
+        //potential jumping block issue
+        if ((shapes[index].x - posX) > 100 || (shapes[index].y - posY) > 100 || (shapes[index].x - posX) < -100 || (shapes[index].y - posY) < -100)
+            collide = true;
 
         if (!collide) {
 
@@ -155,17 +173,17 @@ if ((shapes[index].x-posX)>100|| (shapes[index].y-posY)>100||(shapes[index].x-po
         var i;
         for (i = 0; i < numPieces; i++) {
             context.fillStyle = shapes[i].color;
-          
+
             context.fillRect(shapes[i].x, shapes[i].y, shapes[i].width, shapes[i].height);
             context.strokeStyle = "#0000FF";
             context.lineWidth = 2;
             context.strokeRect(shapes[i].x, shapes[i].y, shapes[i].width, shapes[i].height);
-    
-            
-            
-            
+
+
+
+
         }
-    
+
     }
 
     function drawScreen() {
@@ -175,8 +193,6 @@ if ((shapes[index].x-posX)>100|| (shapes[index].y-posY)>100||(shapes[index].x-po
 
         drawObjects();
     }
-
-
 
     function foundpiece() {
         //find which shape was clicked
@@ -191,4 +207,48 @@ if ((shapes[index].x-posX)>100|| (shapes[index].y-posY)>100||(shapes[index].x-po
         }
         return false;
     }
+
+    function checkSolution() {
+        var k;
+        var win = false;
+        for (k = 0; k < numPieces; k++) {
+            //console.log(k+ " : "+shapes[k].color+" "+ shapes[k].x  + "   "+shapes[k].y );
+            if (shapes[k].color === "red" && shapes[k].x >= 280 && shapes[k].y <= 120)
+                win = true;
+            if (shapes[k].color === "fuchsia" && shapes[k].x >= 180 && shapes[k].y <= 120)
+                win = true;
+            if (shapes[k].color === "orange" && shapes[k].x >= 80 && shapes[k].y <= 120)
+                win = true;
+            if (shapes[k].color === "yellow" && shapes[k].x >= 0 && shapes[k].y <= 120)
+                win = true;
+            if (shapes[k].color === "lime" && shapes[k].x >= 280 && shapes[k].y <= 180)
+                win = true;
+            if (shapes[k].color === "green" && shapes[k].x >= 180 && shapes[k].y <= 180)
+                win = true;
+            if (shapes[k].color === "teal" && shapes[k].x >= 80 && shapes[k].y <= 180)
+                win = true;
+            if (shapes[k].color === "blue" && shapes[k].x >= 0 && shapes[k].y <= 180)
+                win = true;
+            if (shapes[k].color === "purple" && shapes[k].x >= 280 && shapes[k].y >= 180)
+                win = true;
+            if (shapes[k].color === "maroon" && shapes[k].x >= 180 && shapes[k].y >= 180)
+                win = true;
+            if (shapes[k].color === "white" && shapes[k].x >= 80 && shapes[k].y >= 180)
+                win = true;
+
+            if (!win) {
+                break;
+            }
+            win = false;
+        }
+
+        if (k === numPieces) {
+            document.getElementById("skip").innerHTML="Don't Cheat this time!";
+            document.getElementById("win").play();
+            init();
+            
+        }
+
+    }
+    
 }

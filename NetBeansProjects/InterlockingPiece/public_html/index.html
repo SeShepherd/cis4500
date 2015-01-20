@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Created by Sarah Shepherd
+CIS4500 Specials Topic
+University of Guelph
+Interlocking pieces
+Sound clip:Ta Da
+Uploaded: 09.14.09 | License: Attribution 3.0 | Recorded by Mike Koenig 
 -->
 <html>
     <head>
@@ -10,24 +13,39 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
         
     </head>
     <body onload="freeBlock()">
-        <h1> Every Puzzle has a Solution</h1>
-    
-         <!--<div>TODO write content</div>-->
+        <div class="top">
+            <h1> Every Puzzle has a Solution</h1>
+            <div class="format"><button type="button" onclick="freeBlock()" >Reset</button></div>
+            <p>
+                
+            </p>
+        </div>
+        
         <canvas id="canvas" width="400" height="300">
             <!--In case the browser cannot display HTML5 -->
             This browser does not support HTML5
-            
-            
-            
         </canvas>
-         <h3> Puzzle Task: </h3>
-         <h4>Move the squares around to reverse the image to match the picture below</h4>
-         <img src="SolutionA1.jpg" alt="Solution">
-           <script src="freeBlock.js"></script>
+ 
+        <div class="instructions">
+            <div class="format"> <button type="button" id="skip">Skip to last moves</button></div>
+            <h3> Puzzle Task: </h3>
+            <h4>Move the squares around to create the image to match the picture below</h4>
+            <img src="SolutionA1.jpg" alt="Solution">
+        </div>
         
+        <audio id="win">
+            <source  src="Ta Da-SoundBible.com-1884170640.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+        
+        
+        
+        <script src="freeBlock.js"></script>
+
+
+
     </body>
 </html>
