@@ -4,19 +4,33 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 Making slight change checking to see if system is setup right now
+Sound Clips:
+bark.wav        freesounds.org User: nfrae
+imp-laugh.wav   freesounds.org User: scorpion67890
+Lab_3.mp3    Created by Sarah Shepherd
 -->
 <html>
     <head>
         <title>Ghost Hunt</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <link rel="stylesheet" type="text/css" href="style.css">
         <script type="text/javascript" src="ghostHunt.js"></script>
         
      <script type="text/javascript" src="gameEngine.js"></script>
     </head>
     <body onload="init()">
-           
+          <audio id="laugh">
+            <source  src="sounds/imp-laugh.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+        <audio id="bark">
+            <source  src="sounds/bark.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+        <audio id="bgNoise">
+            <source src="sounds/Lab_3.mp3" type="audio/mpeg">
+        </audio>
        <!--Game Title -->
       <!--Instructions -->
       <!--Mascot -->

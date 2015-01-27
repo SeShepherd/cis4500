@@ -22,16 +22,16 @@ function World(width, height, tileSize,id) {
 
     //Set the world matrix
     this.tileWidth = tileSize;
-    this.id = id;
-    this.grid = new Array(this.width / this.tileWidth);
-    for (i = 0; i < this.width / this.tileWidth; i++) {
+  //  this.id = id;
+ //   this.grid = new Array(this.width / this.tileWidth);
+ //   for (i = 0; i < this.width / this.tileWidth; i++) {
 
-        this.grid[i] = new Array(this.height / this.tileWidth);
-        for (j = 0; j < this.height / this.tileWidth; j++)
-            this.grid[i][j] = id;
-        
-    }
-    this.canvas.style.backgroundColor = "black";
+//        this.grid[i] = new Array(this.height / this.tileWidth);
+//        for (j = 0; j < this.height / this.tileWidth; j++)
+//            this.grid[i][j] = id;
+//        
+//    }
+    //this.canvas.style.background = "images/backg.png";
 
 
 }
@@ -57,17 +57,6 @@ World.prototype.stop = function () {
     clearInterval(this.updateTime);
 
 };
-World.prototype.setGridVal = function (x, y, id) {
-
-    this.grid[x][y] = id;
-
-};
-
-World.prototype.getGridVal = function (x, y) {
-
-    return this.grid[x][y];
-
-};
 
 
 function Sprite(world, width, height, image, x, y,id) {
@@ -87,6 +76,7 @@ function Sprite(world, width, height, image, x, y,id) {
     this.y = y*this.height;
      
     this.context.drawImage(this.image,x,y);
+    this.visible=true;
 
 };
 
@@ -95,21 +85,26 @@ Sprite.prototype.setImage = function (image) {
     this.image.src = image;
 
 };
-Sprite.prototype.SetDir = function (direction) {
+Sprite.prototype.setDir = function (direction) {
 
     this.direction=direction;
 
 };
 Sprite.prototype.setX = function (x) {
 
-    this.x = x;
+    this.x = x*this.width;
     this.xPos = (this.x * this.world.tileWidth) + (this.world.tileWidth / 2);
 
 };
 Sprite.prototype.setY = function (y) {
 
-    this.y = y;
+    this.y = y*this.height;
     this.yPos = (this.y * this.world.tileWidth) + (this.world.tileWidth / 2);
+
+};
+Sprite.prototype.setId = function (id) {
+
+    this.id=id;
 
 };
 Sprite.prototype.getImage = function () {
@@ -147,40 +142,29 @@ Sprite.prototype.transform = function (id, image) {
 };
 Sprite.prototype.update = function () {
 
+if (this.visible){
+
     this.context.save();
     //this.context.translate(this.xPos, this.yPos);
     this.context.drawImage(this.image,this.x,this.y);
-
     this.context.restore();
+}
 
 };
 
+Sprite.prototype.isVisible = function () {
 
+    return this.visible;
 
-//Player inherits from Sprite
-//Player.prototype = new Sprite();
-//Player.constructor = Player;
-//Player.parent = Sprite.prototype;
+};
+Sprite.prototype.show = function(){
 
-//Timer class
-function Timer(startTime, endTime, timeDiv) {
-
-    this.currentTime = startTime;
-    this.endTime = endTime;
-    self = this;
+	this.visible = true;
 
 };
 
-Timer.prototype.start = function () {
+Sprite.prototype.hide = function(){
 
-    //Set the timer to count down every second
-    this.updateTime = setInterval(self.update, 1000);
-
-};
-
-Timer.prototype.stop = function () {
-
-    //Stop the timer
-    clearInterval(this.updateTime);
+	this.visible = false;
 
 };
