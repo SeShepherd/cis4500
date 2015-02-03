@@ -1,0 +1,29 @@
+/*
+Created by Sarah Shepherd
+CIS*4500
+University of Guelph
+Shooting
+*/
+/* 
+    Created on : Jan 27, 2015, 6:42:17 PM
+    Author     : sarahshepherd
+*/
+
+canvas {
+    display:block;
+    margin:auto;
+    border: 1px dashed black;
+    /*background: url(images/bg.png);*/
+  
+    
+}
+h1{
+   text-align: center; 
+}
+.instructions {
+
+}
+
+#canvas {
+
+}
