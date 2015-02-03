@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Created by Sarah Shepherd
+CIS4500 Specials Topic
+University of Guelph
+Interlocking pieces
+Sound clip:Ta Da
+Uploaded: 09.14.09 | License: Attribution 3.0 | Recorded by Mike Koenig 
+-->
+<html>
+    <head>
+        <title>Interlocking Pieces</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+    </head>
+    <body onload="freeBlock()">
+        <div class="top">
+            <h1> Every Puzzle has a Solution</h1>
+            <div class="format"><button type="button" onclick="freeBlock()" >Reset</button></div>
+            <p>
+                
+            </p>
+        </div>
+        
+        <canvas id="canvas" width="400" height="300">
+            <!--In case the browser cannot display HTML5 -->
+            This browser does not support HTML5
+        </canvas>
+ 
+        <div class="instructions">
+            <div class="format"> <button type="button" id="skip">Skip to last moves</button></div>
+            <h3> Puzzle Task: </h3>
+            <h4>Move the squares around to create the image to match the picture below</h4>
+            <img src="SolutionA1.jpg" alt="Solution">
+            
+            <h3> How to Move: </h3>
+            <h4>Drag the squares by holding down the right mouse button when clicking on a square.
+                Release the mouse to let go of a square.</h4>
+        </div>
+        
+        <audio id="win">
+            <source  src="Ta Da-SoundBible.com-1884170640.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+        
+        
+        
+        <script src="freeBlock.js"></script>
+
+
+
+    </body>
+</html>

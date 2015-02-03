@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Created by Sarah Shepherd
+CIS4500 Specials Topic
+University of Guelph
+Visibility
+
+Sound Clips:
+bark.wav        freesounds.org User: nfrae
+imp-laugh.wav   freesounds.org User: scorpion67890
+Lab_3.mp3    Created by Sarah Shepherd
+-->
+<html>
+    <head>
+        <title>Ghost Hunt</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="ghostHunt.js"></script>
+        
+     <script type="text/javascript" src="gameEngine.js"></script>
+    </head>
+    <body onload="init()">
+          <audio id="laugh">
+            <source  src="sounds/imp-laugh.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+        <audio id="bark">
+            <source  src="sounds/bark.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+        <audio id="bgNoise">
+            <source src="sounds/Lab_3.mp3" type="audio/mpeg">
+        </audio>
+        
+       <!--Game Title -->
+       <h1> Ghost Hunt </h1>
+    
+       <!--Mascot -->
+      <img class="mascot" src="images/mascot.png" alt="Mascot">
+      
+        <!--Instructions -->
+      <div class="instructions">
+
+            <h3> Story: </h3>            
+            Welsh the dog has a task of scaring away the ghost.
+                Only a combination of a bright light and a bark will scare a ghost away.<bold>Be careful since if the light will <br>take time to recharge if it's left on<bold>
+                The ghost will only be visible if they are in darkness. 
+                How many ghost can you help remove?
+            
+            
+            <h3> How to Move: </h3>
+            <h4>Use the arrow keys to move welsh, the space bar will control on the light source. </h4>(The light source will only stay on for 3 moves, and if take 3 moves to recharge if completely depleted)
+        </div>
+        
+       <!--Instructions -->
+      <div class="Score">
+         <label>Score:</label> <label id="points"></label>
+     </div>
+    </body>
+     
+</html>
