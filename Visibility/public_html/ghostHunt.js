@@ -286,7 +286,7 @@ function deadDog() {
             //GamePlay mechanics
             gamePoints(0);
             //restart ghost
-            addGhost(i);
+            enemies[i].setId(0);
 
         }
 
