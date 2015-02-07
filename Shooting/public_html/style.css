@@ -14,6 +14,7 @@ canvas {
     margin:auto;
     border: 1px dashed black;
     background-color: black ;
+    background: url(images/bg.png);
   
     
 }
@@ -25,7 +26,7 @@ h1{
 .mascot{
    position: absolute;
     top: 0px;
-    right: 5px;
+    right: 10px;
   
     
 }

@@ -10,7 +10,7 @@
  update objects
  */
 var player, mirrors = [], win;
-var level = 1, screen;
+var level = 0, screen;
 var count;
 var mirNum = 15;
 var bullet, bullCount = 0;
@@ -147,8 +147,8 @@ function createLevel() {
             }
             for (i = 4; i < 8; i++) {
                 screen.setGridVal(2 + i, i, 1);
-                mirrors[i] = new Sprite(screen, screen.tileWidth, screen.tileWidth, "images/mirror1.png", (i * screen.tileWidth) + (2 * screen.tileWidth), (i * screen.tileWidth) + screen.tileWidth, 1);
-                mirrors[i].setDir(2);
+                mirrors[i] = new Sprite(screen, screen.tileWidth, screen.tileWidth, "images/mirror2.png", (i * screen.tileWidth) + (2 * screen.tileWidth), (i * screen.tileWidth) + screen.tileWidth, 1);
+                mirrors[i].setDir(1);
 
             }
 
