@@ -1,7 +1,9 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Created by Sarah Shepherd
+ * CIS4500 Specials Topic
+ * University of Guelph
+ * 
+ * GameEngine.js basics
  */
 
 
@@ -20,32 +22,13 @@ function World(width, height, tileSize,id) {
     this.canvas.height = this.height;
     
 
-    //Set the world matrix
+   
     this.tileWidth = tileSize;
-  //  this.id = id;
- //   this.grid = new Array(this.width / this.tileWidth);
- //   for (i = 0; i < this.width / this.tileWidth; i++) {
-
-//        this.grid[i] = new Array(this.height / this.tileWidth);
-//        for (j = 0; j < this.height / this.tileWidth; j++)
-//            this.grid[i][j] = id;
-//        
-//    }
-    //this.canvas.style.background = "images/backg.png";
-
-
 }
 World.prototype.start = function () {
 
     //Set the method "update" to run every 50 milliseconds
     this.updateTime = setInterval(update, 100);
-
- 
-
-    //this.mouseX = 0;
-    //this.mouseY = 0;
-    //this.mouseDown = false;
-
 };
 World.prototype.clear = function () {
 

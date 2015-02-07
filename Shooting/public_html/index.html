@@ -12,9 +12,11 @@ Shooting
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="gameEngine.js"></script>
+        <script type="text/javascript" src="Rules.js"></script>
         
     </head>
-    <body>
+     <body>
         <!--Audio -->
          <!--Game Title -->
          <h1> Trick Shot </h1>
@@ -26,8 +28,26 @@ Shooting
          
          <!--Canvas -->
          <div id="canvas">
-             <canvas width="600" height="500"></canvas>
+            
          </div>
-        
+         <script type="text/javascript">
+                var screen = new World(300, 275, 25, 0);
+                var game = new Shooter(screen);
+                //game.start();
+
+         </script>
+        <audio id="bounce">
+            <source  src="sounds/13977__adcbicycle__25.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+         <audio id="bullet">
+            <source  src="sounds/238159__jtragaudio__fuzzsound-bullet.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+         <audio id="win">
+            <source  src="sounds/253177__suntemple__retro-accomplished-sfx.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
     </body>
 </html>
+
