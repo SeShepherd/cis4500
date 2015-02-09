@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Created by Sarah Shepherd
+CIS*4500 Specials Topic
+University of Guelph
+ChangeState
+-->
+
+<html>
+    <head>
+        <title>Family Mission</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="gameEngine.js"></script>
+        <script type="text/javascript" src="Rules.js"></script>
+        
+    </head>
+     <body>
+        
+         <!--Game Title -->
+         <h1> Family Mission </h1>
+         
+         <!--Mascot -->
+      <img class="mascot" src="images/mascot.png" alt="Mascot">
+
+           
+         <!--Canvas -->
+         <div id="canvas">  </div>
+            
+          
+        
+         <script type="text/javascript">
+                var screen = new World(600, 275, 50, 0);
+                var game = new Shooter(screen);
+                //game.start();
+
+         </script>
+         <!--Audio -->
+        
+         
+        <!--Instructions -->
+      <div class="instructions">
+          <h3> How to Move: </h3>
+            <h4>Use the arrow keys to move the family members around. Press space bar to change which character to move.  <br>Some characters can only do certain task. <br>
+            </h4>
+          
+          <h3> Story: </h3>            
+            A small family trying to leave their crazy house, but they need the key in order to lock the door. <br>Can you help the family lock up?<br>
+         </div>
+         
+    </body>
+</html>
