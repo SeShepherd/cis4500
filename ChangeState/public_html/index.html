@@ -4,6 +4,8 @@ Created by Sarah Shepherd
 CIS*4500 Specials Topic
 University of Guelph
 ChangeState
+Sound clip:Ta Da
+Uploaded: 09.14.09 | License: Attribution 3.0 | Recorded by Mike Koenig 
 -->
 
 <html>
@@ -31,22 +33,29 @@ ChangeState
           
         
          <script type="text/javascript">
-                var screen = new World(600, 275, 50, 0);
-                var game = new Shooter(screen);
+                var screen = new World(600, 300, 50, 0);
+                var game = new State(screen);
                 //game.start();
 
          </script>
          <!--Audio -->
-        
+        <audio id="win">
+            <source  src="Ta Da-SoundBible.com-1884170640.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
          
         <!--Instructions -->
       <div class="instructions">
+          <div class="format">
+          <button type="button" id="reset" onclick="Reset();">RESET</button></div>
+      
           <h3> How to Move: </h3>
-            <h4>Use the arrow keys to move the family members around. Press space bar to change which character to move.  <br>Some characters can only do certain task. <br>
+            <h4>Use the arrow keys to move the character around. Press space bar to change which character to move.  <br>Some characters can only do certain task. <br>
             </h4>
+          Note: You can not walk down a ladder (if you get stuck, please use the reset button)
           
           <h3> Story: </h3>            
-            A small family trying to leave their crazy house, but they need the key in order to lock the door. <br>Can you help the family lock up?<br>
+            <b>Alaska</b>(Tall and skinny), <b>Mississipi </b>(Medium and heavy) and <b>Hawaii</b> (tiny) are trying to leave their crazy house, but they need the key in order to unlock the door. <br>Can you help the family leave? (all family members should exit the open door)
          </div>
          
     </body>
