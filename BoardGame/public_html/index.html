@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Created by Sarah Shepherd
+CIS*4500 Specials Topic
+University of Guelph
+Board Game
+
+
+-->
+
+<html>
+    <head>
+        <title>Take a Guess</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="gameEngine.js"></script>
+        <script type="text/javascript" src="Rules.js"></script>
+        
+    </head>
+     <body>
+        
+         <!--Game Title -->
+         <h1> Take a Guess </h1>
+         
+         <!--Mascot -->
+      <img class="mascot" src="images/mascot.png" alt="Mascot">
+
+           
+         <!--Canvas -->
+         <div id="board">  </div>
+            
+          
+        
+         <script type="text/javascript">
+                var screen = new World(600, 300, 50, 0);
+                var game = new State(screen);
+                //game.start();
+
+         </script>
+         <!--Audio -->
+         
+        <!--Instructions -->
+      <div class="instructions">
+          <div class="format">
+      
+          <h3> Rules: </h3>
+          For Players 1-4 <br>
+                Each turn begins with the player either rolling or guessing.
+                <br>
+                <hr>
+                <b>Guessing:</b><br>
+                Select the colour and the number you think the ball will be. Then Roll the cage for a ball.
+                <br>- If the either the color or the number was CORRECT move forward an additional square or move an opponent back a square
+                <br>- If both the color and the number were CORRECT jump up a row or move an opponent down a row
+                <br>- If both the color and the number were INCORRECT move backwards 2 squares<br>
+                <hr>
+                <b>Rolling:</b><br>
+                Roll the cage to get a ball. The player will move the indicated number on the ball.
+                
+            
+                <hr>
+          <h3> To Win: </h3>            
+            You must move the exact number onto the Final square, else you move backwards the amount on the ball
+         </div>
+         
+    </body>
+</html>
