@@ -15,54 +15,88 @@ Board Game
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script type="text/javascript" src="gameEngine.js"></script>
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
         <script type="text/javascript" src="Rules.js"></script>
-        
+
+
     </head>
-     <body>
-        
-         <!--Game Title -->
-         <h1> Take a Guess </h1>
-         
-         <!--Mascot -->
-      <img class="mascot" src="images/mascot.png" alt="Mascot">
+    <body>
 
-           
-         <!--Canvas -->
-         <div id="board">  </div>
-            
-          
-        
-         <script type="text/javascript">
-                var screen = new World(600, 300, 50, 0);
-                var game = new State(screen);
-                //game.start();
+        <!--Game Title -->
+        <h1> Take a Guess </h1>
 
-         </script>
-         <!--Audio -->
-         
+        <!--Mascot -->
+        <div id="openModal" class="modalDialog" >
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <h2>Players</h2>
+                <label>How Many players are there?</label>
+                <select id="players">
+
+                    <option value = "2" >2</option>
+                    <option value = "3">3</option>
+                    <option value = "4">4</option>
+
+                </select>
+                <h4><a href="#OK" title="OK" class="OK" onclick="start()"> OK </a></h4>
+            </div>
+        </div>
+
+        <!--Canvas -->
+
+       
+        <script type="text/javascript">
+
+
+            var cage = new World(200, 200, 20, 0);
+            var board = new World(400, 400, 25, 1);
+            board.setBg("images/board.jpg");
+
+            function start() {
+               var test = new Game(cage, board);
+            }
+
+        </script>
+        <!--Audio -->
+
         <!--Instructions -->
-      <div class="instructions">
-          <div class="format">
-      
-          <h3> Rules: </h3>
-          For Players 1-4 <br>
+
+        <div class="instructions">
+
+            <div class="format">
+                <a href="#openModal">Start Game</a>
+
+                <h3> Rules: </h3>
+                For Players 2-4 <br>
                 Each turn begins with the player either rolling or guessing.
                 <br>
                 <hr>
                 <b>Guessing:</b><br>
-                Select the colour and the number you think the ball will be. Then Roll the cage for a ball.
-                <br>- If the either the color or the number was CORRECT move forward an additional square or move an opponent back a square
-                <br>- If both the color and the number were CORRECT jump up a row or move an opponent down a row
+                Select the colour and the number you think the ball will be. Then click guess for a ball.
+                <br>- If the either the color or the number was CORRECT move forward an additional square
+                <br>- If both the color and the number were CORRECT jump up a row
                 <br>- If both the color and the number were INCORRECT move backwards 2 squares<br>
                 <hr>
                 <b>Rolling:</b><br>
-                Roll the cage to get a ball. The player will move the indicated number on the ball.
-                
-            
+                Click roll to get a ball. The player will move the indicated number on the ball.
+
+
                 <hr>
-          <h3> To Win: </h3>            
-            You must move the exact number onto the Final square, else you move backwards the amount on the ball
-         </div>
-         
+                <h3> To Win: </h3>            
+                You must move the exact number onto the Final square, else you move backwards the amount on the ball.
+            </div>
+            <br>
+            <hr>
+Implementation:<br>
+- 2 Canvas<br>
+- modal window with user input<br>
+- better artwork (ish, I'm drawing all of my images)<br>
+            <br><br>
+Future ideas that were not implemented:<br>
+Add in the ability to move opponents backwards when correct guesses.<br>
+Sounds<br>
+Animate the pieces moving to the squares
+        </div>
+
     </body>
 </html>
