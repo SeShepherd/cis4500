@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+Created by Sarah Shepherd
+CIS*4500 Specials Topic
+University of Guelph
+Tunnels
+
+Audio sound 253619_xtrgamr_potato-chip-crunch-1.wav from freesounds.org
+-->
+
+<html>
+    <head>
+        <title>Sewer Catch</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+        <script type="text/javascript" src="gameEngine.js"></script>
+        <script type="text/javascript" src="Rules.js"></script>
+
+
+    </head>
+    <body>
+
+        <!--Game Title -->
+        <h1> Sewer Catch </h1>
+
+        <!--Mascot -->
+       
+
+        <!--Canvas -->
+
+       
+        <script type="text/javascript">
+            var board = new World(400, 400, 25, 0,"images/testBG1.png");
+            //board.setBg("images/testBG.png");
+               var test = new Game(board);
+            
+
+        </script>
+        <!--Audio -->
+        <audio id="cheese">
+            <source  src="253619__xtrgamr__potato-chip-crunch-2.wav" type="audio/wav">
+                    Your browser does not support the audio tag
+        </audio>
+
+        <!--Instructions -->
+
+        <div class="instructions">
+
+                <h3> Rules: </h3>
+                Skateboard around the sewer tunnel and collect as much cheese before time runs out. What is the highest score you can get?<br>
+                <h3> Controls: </h3>
+                Use the LEFT and RIGHT arrow keys to move the skateboarding mouse<br>
+                <hr>
+                <h3> Current High score: </h3> <label id="score">0</label>            
+                
+            </div>
+            <br>
+            <hr>
+Implementation:<br>
+- Timer<br>
+- Rotation of image and circular movement with initial speed change<br>
+Added to Game Engine:
+- button class (for canvas)<br>
+- Rotation of sprite
+- Timer class
+      
+
+    </body>
+</html>
