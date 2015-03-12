@@ -6,7 +6,6 @@
  * GameEngine.js basics
  */
 
-
 //Canvas will become game world area
 function World(width, height, tileSize, id, image) {
 
@@ -40,7 +39,6 @@ function World(width, height, tileSize, id, image) {
     this.context.drawImage(this.image, 0, 0);
 
 }
-
 World.prototype.setBg = function (image) {
 //this.canvas.style.backgroundColor = "cyan";
 
@@ -48,12 +46,10 @@ World.prototype.setBg = function (image) {
 
 
 };
-
-
 World.prototype.start = function () {
 
     //Set the method "update" to run every 50 milliseconds
-    this.updateTime = setInterval(update, 50);
+    this.updateTime = setInterval(update, 40);
 };
 World.prototype.clear = function () {
 
@@ -76,7 +72,7 @@ World.prototype.setGridVal = function (i, j, id) {
 
 };
 
-//Canvas will become game world area
+//Background animation
 function BG(world, width, height, image) {
 
     this.world = world;
@@ -153,6 +149,7 @@ BG.prototype.update = function () {
     this.context.restore();
 };
 
+//Sprite Character sheets
 function Sprite(world, width, height, image, x, y, id) {
 
     this.world = world;
@@ -173,8 +170,7 @@ function Sprite(world, width, height, image, x, y, id) {
     //console.log(image);
     this.visible = true;
     this.animation = 0;
-}
-;
+};
 Sprite.prototype.setImage = function (image) {
 
     this.image.src = image;
@@ -247,7 +243,6 @@ Sprite.prototype.getId = function () {
     return this.id;
 
 };
-
 Sprite.prototype.rotate = function (angle) {
     this.context.translate(this.x, this.y);
     this.context.rotate(angle);
@@ -267,15 +262,6 @@ Sprite.prototype.rotate = function (angle) {
     this.context.translate(-this.x, -this.y);
 
 };
-//Sprite.prototype.changeImg = function (id, image) {
-
-
-//  this.setImage(image);
-
-//this.world.setGridVal(this.x, this.y, this.idNum);
-
-//};
-
 Sprite.prototype.createAnimation = function (frameWidth, frameHeight, numFrames, rows) {
 
 
@@ -295,7 +281,7 @@ Sprite.prototype.createAnimation = function (frameWidth, frameHeight, numFrames,
 Sprite.prototype.animate = function () {
     this.tickCount++;
 
-    if (this.tickCount > 3) {
+    if (this.tickCount > this.id) {
 
         this.tickCount = 0;
 
@@ -314,7 +300,6 @@ Sprite.prototype.aniDir = function (rowIndex) {
     this.rowIndex = rowIndex;
    
 };
-
 Sprite.prototype.update = function () {
 
     if (this.visible) {
@@ -331,7 +316,6 @@ Sprite.prototype.update = function () {
     }
 
 };
-
 Sprite.prototype.isVisible = function () {
 
     return this.visible;
@@ -362,6 +346,7 @@ Sprite.prototype.collision = function (otherX, otherY, width, height) {
     return false;
 };
 
+//Round circles
 function Projectile(world, x, y, radius, color, id) {
 
     this.world = world;
@@ -378,8 +363,8 @@ function Projectile(world, x, y, radius, color, id) {
     this.xPos = x + (this.radius / 2);
     this.yPos = y + (this.radius / 2);
 
-    this.speed = 0;
-    this.direction = 0;
+    this.speed = 8;
+    this.direction = 4;
     //this.context.drawImage(this.image,x,y);
     this.visible = true;
 
@@ -399,21 +384,25 @@ Projectile.prototype.draw = function (x, y) {
     this.context.fill();
 };
 Projectile.prototype.move = function () {
-    if (this.direction === 4) {
+    if (this.direction === 2) {
         //left
         this.x = this.x + this.speed;
+        this.y = this.y + this.speed/3;
     }
     else if (this.direction === 1) {
         //up
-        this.y = this.y - this.speed;
+        this.y = this.y - this.speed/3;
+        this.x = this.x + this.speed;
     }
-    else if (this.direction === 2) {
+    else if (this.direction === 0) {
         //down
-        this.y = this.y + this.speed;
+        this.y = this.y + this.speed/3;
+        this.x = this.x - this.speed;
     }
     else if (this.direction === 3) {
         //right
         this.x = this.x - this.speed;
+        this.y = this.y - this.speed/3;
     }
     //console.log(this.x+" "+this.y);
     this.xPos = this.x + (this.radius);
@@ -434,9 +423,11 @@ Projectile.prototype.changeColor = function (color) {
 };
 Projectile.prototype.collision = function (otherX, otherY, width, height) {
 
+//console.log(otherX, otherY,this.xPos,this.yPos);
+
     if (this.xPos >= (otherX + (width / 3)) && this.xPos < (otherX + width - (width / 3))) {
 
-//console.log(otherY + height-(height/3))+"  Y "+ otherY+(height/3));
+
         //topside and  bottomside
         if (this.yPos >= (otherY + (height / 3)) && this.yPos < (otherY + height - (height / 3))) {
             //Don't move if shape is in this area
@@ -472,6 +463,7 @@ Projectile.prototype.hide = function () {
 
 };
 
+//Buttons
 function Button(world, text, width, height, x, y) {
     this.world = world;
     this.text = text;
@@ -494,6 +486,7 @@ function Button(world, text, width, height, x, y) {
 }
 Button.prototype.draw = function () {
 
+if(this.isVisible()){
     this.world.context.fillStyle = "#520E03";
     this.world.context.fillRect(this.x, this.y, this.width, this.height);
     this.world.context.strokeStyle = "#A2470F";
@@ -503,7 +496,7 @@ Button.prototype.draw = function () {
     this.world.context.fillStyle = "#A207FF";
     this.world.context.font = "15px Verdana";
     this.world.context.fillText(this.text, (this.x + 25), (this.y + 28));
-
+    }
 };
 Button.prototype.setText = function (text) {
 
@@ -530,8 +523,41 @@ Button.prototype.isClicked = function (mx, my) {
     return (dx && dy);
 
 };
+Button.prototype.isVisible = function(){
+    return this.visible;
+};
 
-
+function Display(world,text,x,y){
+  this.world = world;
+  this.text = text;
+  this.x = x;
+  this.y = y;
+  this.color = "white";
+}
+Display.prototype.display = function(){
+    this.world.context.font = "20px Verdana";
+    this.world.context.fillStyle = this.color;
+    this.world.context.fillText(this.text, this.x, this.y);
+};
+Display.prototype.changeColor = function(color){
+    this.color = color;
+};
+Display.prototype.gradient3 = function(val1,val2,val3,color1,color2,color3,x1,y1,x2,y2){
+    // Create gradient
+    var gradient = this.world.context.createLinearGradient(x1, y1, x2, y2);
+    gradient.addColorStop(val1, color1);
+    gradient.addColorStop(val2, color2);
+    gradient.addColorStop(val3, color3);
+};
+Display.prototype.gradient2 = function(val1,val2,color1,color2,x1,y1,x2,y2){
+    // Create gradient
+    var gradient = this.world.context.createLinearGradient(x1,y1,x2,y2);
+    gradient.addColorStop(val1, color1);
+    gradient.addColorStop(val2, color2);
+};
+Display.prototype.updateText=function(text){
+  this.text=text;
+};
 
 
 //Timer class
@@ -545,14 +571,12 @@ function Timer(startTime, endTime, interval) {
     self = this;
 
 }
-
 Timer.prototype.stop = function () {
 
     //Stop the timer
     clearInterval(self.updateTime);
 
 };
-
 Timer.prototype.getCurT = function () {
 
     return self.current;
@@ -563,13 +587,11 @@ Timer.prototype.setCurT = function (time) {
     self.current = time;
 
 };
-
 Timer.prototype.getElapsed = function () {
 
     return self.elapsed;
 
 };
-
 Timer.prototype.setElapsed = function (time) {
 
     self.elapsed = time;
@@ -578,6 +600,11 @@ Timer.prototype.setElapsed = function (time) {
 Timer.prototype.countDown = function () {
 
     self.current--;
+
+};
+Timer.prototype.countUp = function () {
+
+    self.current++;
 
 };
 Timer.prototype.startCountUp = function () {
